@@ -3,595 +3,688 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="BYEMEFUI — Mentoría 1 a 1 para argentinos que se mudan a París. Ordená tu vivienda, banco y trámites en tus primeros 30 días en Francia." />
-  <meta name="theme-color" content="#0f172a" />
-
-  <!-- Open Graph básico -->
+  <meta name="description" content="BYEMEFUI — Mentoría 1 a 1 para argentinos que se mudan a París. Sesión estratégica gratuita + hoja de ruta en PDF." />
   <meta property="og:title" content="BYEMEFUI — Aterrizá en París con un plan" />
-  <meta property="og:description" content="Hoja de ruta personalizada 1 a 1 para argentinos en París. Fase Beta gratuita." />
+  <meta property="og:description" content="30 minutos de sesión estratégica + hoja de ruta personalizada en PDF. De un argentino que ya pasó por el barro." />
   <meta property="og:type" content="website" />
+  <title>BYEMEFUI — Aterrizá en París con un plan</title>
 
-  <title>BYEMEFUI — Tu Plan de Aterrizaje en París</title>
-
-  <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS CDN (Play CDN — ideal para desarrollo/landing estática) -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Configuración del sistema de diseño BYEMEFUI en Tailwind -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'brand-bg':         '#fdfbf7',
-            'brand-navy':       '#0f172a',
-            'brand-slate':      '#1e293b',
-            'brand-orange':     '#d97706',
-            'brand-orange-hot': '#ea580c',
-            'brand-muted':      '#64748b',
+            navy:       '#0C1527',
+            'navy-mid': '#162240',
+            orange:     '#F5820D',
+            'orange-d': '#D96E0B',
+            cream:      '#FDFAF5',
           },
-          fontFamily: {
-            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-          },
-          animation: {
-            'fade-up': 'fadeUp 0.6s ease forwards',
-          },
-          keyframes: {
-            fadeUp: {
-              '0%':   { opacity: '0', transform: 'translateY(20px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-          },
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'sans-serif'] },
         },
       },
     }
   </script>
-
-  <!-- Estilos personalizados -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body class="bg-brand-bg font-sans text-brand-navy antialiased">
+<body class="bg-cream font-sans antialiased text-navy">
 
 
-  <!-- ================================================================
-       NAVBAR
-       ================================================================ -->
-  <header class="sticky top-0 z-50 bg-brand-bg/95 backdrop-blur-md border-b border-slate-100 navbar-bg">
-    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 sm:h-20">
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<header class="fixed top-0 inset-x-0 z-50 bg-cream/95 backdrop-blur-md border-b border-navy/8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
 
-      <!-- Logotipo -->
-      <a href="index.html" class="flex items-center gap-2 flex-shrink-0" aria-label="Inicio BYEMEFUI">
-        <img
-          src="assets/logo.png"
-          alt="BYEMEFUI"
-          class="h-10 sm:h-12 w-auto object-contain"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-        />
-        <!-- Fallback tipográfico si no hay logo -->
-        <span
-          class="hidden items-center gap-0.5 text-2xl font-black text-brand-navy tracking-tight"
-          aria-hidden="true"
-        >BYE<span class="text-brand-orange">ME</span>FUI</span>
-      </a>
+    <!-- Logo -->
+    <a href="/" class="flex-shrink-0" aria-label="Inicio">
+      <img src="assets/logo.png" alt="BYEMEFUI" class="h-9 w-auto object-contain"
+        onerror="this.outerHTML='<span class=\'font-black text-xl tracking-tight\'>BYE<span class=\'text-orange\'>ME</span>FUI</span>'" />
+    </a>
 
-      <!-- CTA único en navbar -->
-      <a
-        href="#"
-        <!-- REEMPLAZAR con tu link de Tally: https://tally.so/r/XXXXXX -->
-        class="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-hot text-white font-semibold text-sm sm:text-base px-4 sm:px-6 py-2.5 rounded-lg shadow-sm hover:shadow-md hover:-translate-y-px"
-      >
-        <span>Reservar Sesión Gratis</span>
-        <!-- Ícono flecha inline (sin dependencia externa) -->
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
+    <!-- Centro: badge cupos -->
+    <div class="hidden sm:flex items-center gap-2 text-xs font-medium text-navy/50">
+      <span class="relative w-2 h-2 flex-shrink-0">
+        <span class="pulse-ring absolute inset-0 rounded-full bg-orange/30"></span>
+        <span class="relative w-2 h-2 bg-orange rounded-full block"></span>
+      </span>
+      Fase Beta · 3 cupos disponibles
+    </div>
 
-    </nav>
-  </header>
+    <!-- CTA nav -->
+    <a href="#formulario"
+      class="flex-shrink-0 bg-navy text-cream text-sm font-semibold px-4 py-2 rounded-lg hover:bg-navy-mid">
+      Postular ahora
+    </a>
+
+  </div>
+</header>
 
 
-  <main>
+<!-- ============================================================
+     HERO — Split: Pitch izquierda / Formulario derecha
+     ============================================================ -->
+<section class="min-h-screen pt-14 flex items-center bg-cream">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 lg:py-20 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-10 lg:gap-16 items-start">
 
-    <!-- ================================================================
-         SECCIÓN 1 — HERO
-         ================================================================ -->
-    <section id="inicio" class="relative overflow-hidden pt-16 pb-24 sm:pt-24 sm:pb-32 lg:pt-32 lg:pb-44">
+      <!-- ── Columna izquierda: Pitch ── -->
+      <div class="space-y-7 lg:pt-4">
 
-      <!-- Decoraciones de fondo -->
-      <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div class="absolute -top-48 -right-48 w-[500px] h-[500px] bg-amber-100/50 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 -left-32 w-80 h-80 bg-sky-50/60 rounded-full blur-3xl"></div>
+        <!-- Etiqueta -->
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-orange flex items-center gap-2">
+          <span>Mentoría estratégica para argentinos</span>
+          <span class="hidden sm:inline text-navy/20">·</span>
+          <span class="hidden sm:inline text-navy/40 normal-case tracking-normal font-medium">París, Francia</span>
+        </p>
+
+        <!-- H1 -->
+        <h1 class="text-[2.6rem] sm:text-6xl lg:text-[4.8rem] font-black leading-[1.03] tracking-tight">
+          París no<br />perdona<br />a los<br class="hidden sm:block" />
+          <span class="text-gradient">improvisados.</span>
+        </h1>
+
+        <!-- Sub -->
+        <p class="text-base sm:text-xl text-navy/65 leading-relaxed max-w-lg">
+          Una sesión de <strong class="text-navy font-semibold">30 minutos + una hoja de ruta en PDF</strong>
+          puede ahorrarte semanas de caos y cientos de euros de Airbnb de más.<br class="hidden sm:block" />
+          De un argentino que ya pasó por el barro.
+        </p>
+
+        <!-- Stats row -->
+        <div class="flex flex-wrap items-center gap-x-8 gap-y-4 pt-2">
+          <div>
+            <p class="text-4xl font-black text-orange leading-none">30'</p>
+            <p class="text-xs text-navy/45 font-medium mt-1">Sesión por Meet</p>
+          </div>
+          <div class="hidden sm:block w-px h-10 bg-navy/10"></div>
+          <div>
+            <p class="text-4xl font-black text-orange leading-none">PDF</p>
+            <p class="text-xs text-navy/45 font-medium mt-1">Hoja de ruta a medida</p>
+          </div>
+          <div class="hidden sm:block w-px h-10 bg-navy/10"></div>
+          <div>
+            <p class="text-4xl font-black text-orange leading-none">€0</p>
+            <p class="text-xs text-navy/45 font-medium mt-1">Fase Beta gratuita</p>
+          </div>
+        </div>
+
+        <!-- ── FOTO HERO (opcional) ──
+             Reemplazá el div de abajo con:
+             <figure class="mt-6 rounded-2xl overflow-hidden aspect-[16/7]">
+               <img src="assets/foto-paris.jpg" alt="Vista de París" class="w-full h-full object-cover" />
+             </figure>
+        -->
+        <div class="mt-6 rounded-2xl aspect-[16/7] photo-placeholder hidden lg:flex" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>FOTO PARIS · reemplazá assets/foto-paris.jpg</span>
+        </div>
+
       </div>
 
-      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl reveal">
 
-          <!-- Badge de urgencia -->
-          <div class="inline-flex items-center gap-2.5 bg-amber-50 border border-amber-200 text-amber-800 text-sm font-medium px-4 py-1.5 rounded-full mb-8">
-            <span class="w-2 h-2 bg-amber-500 rounded-full badge-pulse flex-shrink-0" aria-hidden="true"></span>
-            Fase Beta — Solo 5 cupos disponibles
-          </div>
+      <!-- ── Columna derecha: Formulario (EL PROTAGONISTA) ── -->
+      <div id="formulario" class="bg-navy rounded-2xl p-6 sm:p-8 scroll-mt-20 lg:sticky lg:top-20">
 
-          <!-- H1 principal -->
-          <h1 class="text-[2.6rem] sm:text-5xl lg:text-7xl font-black text-brand-navy leading-[1.08] tracking-tight mb-6">
-            Bájate del caos.<br />
-            <span class="hero-gradient-text">Aterrizá en París</span><br />
-            con un plan.
-          </h1>
+        <!-- Header del form -->
+        <div class="mb-7">
+          <p class="text-orange font-bold text-xs uppercase tracking-widest mb-1">Paso 1 de 1</p>
+          <h2 class="text-white text-2xl font-black leading-tight">Reservá tu sesión<br />gratuita</h2>
+          <p class="text-white/40 text-sm mt-1.5">3 preguntas · 1 minuto · Sin tarjeta</p>
+        </div>
 
-          <!-- Subtítulo -->
-          <p class="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl mb-10">
-            El acompañamiento estratégico <strong class="text-brand-slate font-semibold">1 a 1</strong> para ordenar tu vivienda, banco y trámites burocráticos en tus primeros 30 días en Francia.
-            <span class="italic">De un argentino que ya pasó por el barro</span>, para que vos no patines tus ahorros.
-          </p>
+        <!--
+        ════════════════════════════════════════════════════
+        FORMULARIO TALLY — INSTRUCCIONES DE ACTIVACIÓN
 
-          <!-- CTA Principal -->
-          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <a
-              href="#"
-              <!-- REEMPLAZAR con tu link de Tally: https://tally.so/r/XXXXXX -->
-              class="inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orange-hot text-white font-bold text-base sm:text-lg px-8 py-4 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-0.5"
+        OPCIÓN A (recomendada): Borrá todo el <form> y reemplazalo por:
+
+        <iframe
+          data-tally-src="https://tally.so/embed/[TU_FORM_ID]?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+          loading="lazy"
+          width="100%"
+          height="420"
+          frameborder="0"
+          title="Formulario BYEMEFUI"
+        ></iframe>
+        <script>
+          var d=document,w="https://tally.so/widgets/embed.js",
+          v=function(){"undefined"!=typeof Tally
+            ?Tally.loadEmbeds()
+            :d.querySelectorAll("iframe[data-tally-src]:not([src])")
+              .forEach(function(e){e.src=e.dataset.tallySrc})};
+          if("undefined"!=typeof Tally)v();
+          else if(d.querySelector('script[src="'+w+'"]')==null){
+            var s=d.createElement("script");
+            s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s);
+          }
+        <\/script>
+
+        OPCIÓN B: Usar el formulario HTML de abajo. Cambiá
+        action="https://tally.so/r/[TU_FORM_ID]" para
+        redirigir al formulario de Tally al hacer submit.
+        ════════════════════════════════════════════════════
+        -->
+
+        <form
+          action="https://tally.so/r/REEMPLAZAR-CON-TU-FORM-ID"
+          method="GET"
+          target="_blank"
+          class="space-y-6"
+        >
+
+          <!-- Campo 1: ¿Cuándo? -->
+          <fieldset class="space-y-2.5">
+            <legend class="text-white/75 text-sm font-semibold block">
+              ¿Cuándo llegás o llegaste a París?
+            </legend>
+            <div class="space-y-2">
+
+              <label class="radio-option flex items-center gap-3 cursor-pointer group">
+                <input type="radio" name="cuando" value="ya-llegue" required />
+                <span class="dot"></span>
+                <span class="text-white/60 text-sm group-hover:text-white/90 transition-colors">Ya estoy en París</span>
+              </label>
+
+              <label class="radio-option flex items-center gap-3 cursor-pointer group">
+                <input type="radio" name="cuando" value="menos-1-mes" />
+                <span class="dot"></span>
+                <span class="text-white/60 text-sm group-hover:text-white/90 transition-colors">En menos de 1 mes</span>
+              </label>
+
+              <label class="radio-option flex items-center gap-3 cursor-pointer group">
+                <input type="radio" name="cuando" value="1-3-meses" />
+                <span class="dot"></span>
+                <span class="text-white/60 text-sm group-hover:text-white/90 transition-colors">En 1 a 3 meses</span>
+              </label>
+
+              <label class="radio-option flex items-center gap-3 cursor-pointer group">
+                <input type="radio" name="cuando" value="solo-explorando" />
+                <span class="dot"></span>
+                <span class="text-white/60 text-sm group-hover:text-white/90 transition-colors">Solo estoy investigando</span>
+              </label>
+
+            </div>
+          </fieldset>
+
+          <!-- Campo 2: ¿Qué te preocupa? -->
+          <div class="space-y-2">
+            <label for="freno" class="text-white/75 text-sm font-semibold block">
+              ¿Cuál es tu mayor freno ahora mismo?
+            </label>
+            <select
+              id="freno"
+              name="freno"
+              required
+              class="select-custom w-full bg-white/8 border border-white/15 text-white text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-orange focus:bg-white/12 transition-colors"
             >
-              Postular a la Fase Beta (Cupos Limitados)
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </a>
+              <option value="" disabled selected>Elegí una opción...</option>
+              <option value="vivienda">No sé cómo conseguir departamento</option>
+              <option value="banco">No sé cómo abrir una cuenta bancaria</option>
+              <option value="tramites">Los trámites de visa / residencia me superan</option>
+              <option value="todo">Todo al mismo tiempo me abruma</option>
+            </select>
           </div>
 
-          <!-- Nota sutil de gratuidad -->
-          <p class="mt-5 text-sm text-slate-500 flex items-center gap-2">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500 flex-shrink-0" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-            Fase Beta: 100% Bonificada a cambio de tu feedback sincero
-          </p>
+          <!-- Campo 3: Contacto -->
+          <div class="space-y-2">
+            <label for="contacto" class="text-white/75 text-sm font-semibold block">
+              Tu WhatsApp o email
+              <span class="text-white/35 font-normal"> — para coordinar la sesión</span>
+            </label>
+            <input
+              id="contacto"
+              type="text"
+              name="contacto"
+              placeholder="+54 9 11… o vos@email.com"
+              required
+              class="w-full bg-white/8 border border-white/15 text-white text-sm rounded-xl px-4 py-3 placeholder:text-white/25 focus:outline-none focus:border-orange focus:bg-white/12 transition-colors"
+            />
+          </div>
 
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ================================================================
-         SECCIÓN 2 — LA FRUSTRACIÓN (El problema)
-         ================================================================ -->
-    <section id="problema" class="py-20 sm:py-28 bg-brand-slate">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <!-- Encabezado -->
-        <div class="text-center mb-14 reveal">
-          <p class="text-brand-orange font-semibold text-xs uppercase tracking-[0.2em] mb-3">El Problema</p>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
-            El círculo vicioso<br class="hidden sm:block" /> burocrático francés
-          </h2>
-        </div>
-
-        <!-- Grid de pain points -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-          <!-- Card 1: Vivienda & banco -->
-          <article class="bg-white/5 border border-white/10 rounded-2xl p-8 card-hover reveal">
-            <div class="w-12 h-12 bg-brand-orange/20 rounded-xl flex items-center justify-center mb-6" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                <polyline points="9 22 9 12 15 12 15 22"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-white mb-3">Sin casa no hay banco.<br />Sin banco no hay casa.</h3>
-            <p class="text-slate-400 leading-relaxed text-sm">
-              Para alquilar en París necesitás un <strong class="text-slate-300">RIB francés</strong>. Para abrir la cuenta bancaria necesitás un <strong class="text-slate-300">justificativo de domicilio</strong>. El catch‑22 perfecto que deja a cientos de argentinos durmiendo semanas de más en el Airbnb más caro de Pigalle.
-            </p>
-          </article>
-
-          <!-- Card 2: Foros & desinformación -->
-          <article class="bg-white/5 border border-white/10 rounded-2xl p-8 card-hover reveal">
-            <div class="w-12 h-12 bg-brand-orange/20 rounded-xl flex items-center justify-center mb-6" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"/>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-white mb-3">El agujero negro de los foros.</h3>
-            <p class="text-slate-400 leading-relaxed text-sm">
-              Googleás "cómo abrir cuenta banco Francia argentino" y caés en un hilo de Facebook del 2019 con 47 respuestas contradictorias. Cada consejo es de alguien con <strong class="text-slate-300">diferente visa, diferente ciudad, diferente banco</strong>. Terminás más ansioso que antes, con tres tabs abiertas y cero certezas.
-            </p>
-          </article>
-
-          <!-- Card 3: Sangrado de euros -->
-          <article class="bg-white/5 border border-white/10 rounded-2xl p-8 card-hover reveal">
-            <div class="w-12 h-12 bg-brand-orange/20 rounded-xl flex items-center justify-center mb-6" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="1" x2="12" y2="23"/>
-                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-white mb-3">El sangrado de euros.</h3>
-            <p class="text-slate-400 leading-relaxed text-sm">
-              Cada día extra en un Airbnb en París es entre <strong class="text-slate-300">80 y 150€ tirados</strong>. Si la desesperación te lleva a clickear en un anuncio de LeBonCoin con "pas d'agence, tout inclus", podés perder el depósito completo en una estafa bien armada. La confusión tiene un precio muy concreto.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ================================================================
-         SECCIÓN 3 — LA SOLUCIÓN (El Método)
-         ================================================================ -->
-    <section id="como-funciona" class="py-20 sm:py-28 bg-brand-bg">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <!-- Encabezado -->
-        <div class="text-center mb-16 reveal">
-          <p class="text-brand-orange font-semibold text-xs uppercase tracking-[0.2em] mb-3">El Método</p>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-navy leading-tight">
-            Cómo funciona tu<br />
-            <span class="hero-gradient-text">Hoja de Ruta Personalizada</span>
-          </h2>
-        </div>
-
-        <!-- Pasos -->
-        <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-6">
-
-          <!-- Línea conectora decorativa (solo desktop) -->
-          <div class="step-connector hidden lg:block" aria-hidden="true"></div>
-
-          <!-- Paso 1 -->
-          <article class="flex flex-col items-start reveal">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="flex-shrink-0 w-16 h-16 bg-amber-50 border-2 border-amber-200 rounded-2xl flex items-center justify-center">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                  <polyline points="14 2 14 8 20 8"/>
-                  <line x1="16" y1="13" x2="8" y2="13"/>
-                  <line x1="16" y1="17" x2="8" y2="17"/>
-                </svg>
-              </div>
-              <span class="text-5xl font-black text-slate-100 select-none" aria-hidden="true">01</span>
-            </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3">El Filtro de Situación</h3>
-            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
-              Llenás un formulario corto con tu tipo de visa, tu presupuesto mensual estimado y tu fecha de llegada. Eso me permite entender tu punto de partida exacto y no perder ni un minuto de la sesión en lo que ya sabés.
-            </p>
-          </article>
-
-          <!-- Paso 2 -->
-          <article class="flex flex-col items-start lg:border-x border-slate-100 lg:px-6 reveal">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="flex-shrink-0 w-16 h-16 bg-amber-50 border-2 border-amber-200 rounded-2xl flex items-center justify-center">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l1.77-1.77a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/>
-                </svg>
-              </div>
-              <span class="text-5xl font-black text-slate-100 select-none" aria-hidden="true">02</span>
-            </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3">La Sesión Estratégica <span class="text-brand-orange">(30 min)</span></h3>
-            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
-              Nos conectamos por Google Meet. Atacamos juntos tus 3 dudas más urgentes, ordenamos las prioridades y tiramos abajo los mitos que te están bloqueando. Sin vueltas, sin teoría, pura acción concreta.
-            </p>
-          </article>
-
-          <!-- Paso 3 -->
-          <article class="flex flex-col items-start reveal">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="flex-shrink-0 w-16 h-16 bg-amber-50 border-2 border-amber-200 rounded-2xl flex items-center justify-center">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="20 12 20 22 4 22 4 12"/>
-                  <rect x="2" y="7" width="20" height="5"/>
-                  <path d="M12 22V7"/>
-                  <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
-                  <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
-                </svg>
-              </div>
-              <span class="text-5xl font-black text-slate-100 select-none" aria-hidden="true">03</span>
-            </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3">Tu Receta de Aterrizaje en PDF</h3>
-            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
-              Te llevás un documento a medida con los pasos exactos para tu situación, links oficiales verificados y los hacks de la calle que no encontrás en ningún blog. Tu checklist personal para las primeras 48 horas en suelo francés.
-            </p>
-          </article>
-
-        </div>
-
-        <!-- CTA intermedio -->
-        <div class="text-center mt-16 reveal">
-          <a
-            href="#"
-            <!-- REEMPLAZAR con tu link de Tally: https://tally.so/r/XXXXXX -->
-            class="inline-flex items-center gap-3 bg-brand-navy hover:bg-brand-slate text-white font-semibold text-base px-8 py-4 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-0.5"
+          <!-- Submit -->
+          <button
+            type="submit"
+            class="w-full bg-orange hover:bg-orange-d text-white font-black text-base py-4 rounded-xl hover:-translate-y-0.5 hover:shadow-lg hover:shadow-orange/30 flex items-center justify-center gap-2.5"
           >
-            Quiero mi Hoja de Ruta
+            Postular al cupo gratuito
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
-          </a>
-        </div>
+          </button>
 
-      </div>
-    </section>
+        </form>
 
-
-    <!-- ================================================================
-         SECCIÓN 4 — LOS TRES PILARES (El Starter Kit)
-         ================================================================ -->
-    <section id="starter-kit" class="py-20 sm:py-28 bg-slate-50">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <!-- Encabezado -->
-        <div class="text-center mb-16 reveal">
-          <p class="text-brand-orange font-semibold text-xs uppercase tracking-[0.2em] mb-3">El Starter Kit</p>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-navy leading-tight">
-            Data de calle,<br />no teoría de embajada
-          </h2>
-          <p class="text-slate-600 mt-5 max-w-xl mx-auto text-base sm:text-lg">
-            Tres módulos que atacan los puntos de quiebre reales de los primeros 30 días.
-          </p>
-        </div>
-
-        <!-- Grid de módulos -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-          <!-- Módulo 1: Vivienda -->
-          <article class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 card-hover reveal flex flex-col">
-            <div class="w-14 h-14 bg-brand-navy rounded-2xl flex items-center justify-center mb-5 flex-shrink-0" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                <polyline points="9 22 9 12 15 12 15 22"/>
-              </svg>
-            </div>
-            <span class="inline-block bg-amber-100 text-amber-700 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4 self-start">Módulo 1</span>
-            <h3 class="text-xl font-bold text-brand-navy mb-5">Vivienda</h3>
-            <ul class="space-y-4 text-sm text-slate-600 flex-grow">
-              <li class="flex items-start gap-3">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span><strong class="text-brand-slate">Garantía VISALE:</strong> cómo activarla antes de llegar para tener el aval del Estado francés desde el día&nbsp;1.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span><strong class="text-brand-slate">DossierFacile:</strong> el expediente digital gratuito del gobierno para presentarte como candidato sólido ante los propietarios.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span><strong class="text-brand-slate">Alertas en Jinka:</strong> el truco para ser el primero en ver los pisos nuevos y detectar estafas antes de mover un euro.</span>
-              </li>
-            </ul>
-          </article>
-
-          <!-- Módulo 2: Administración -->
-          <article class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 card-hover reveal flex flex-col">
-            <div class="w-14 h-14 bg-brand-orange rounded-2xl flex items-center justify-center mb-5 flex-shrink-0" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                <line x1="8" y1="21" x2="16" y2="21"/>
-                <line x1="12" y1="17" x2="12" y2="21"/>
-              </svg>
-            </div>
-            <span class="inline-block bg-orange-100 text-orange-700 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4 self-start">Módulo 2</span>
-            <h3 class="text-xl font-bold text-brand-navy mb-5">Administración Express</h3>
-            <ul class="space-y-4 text-sm text-slate-600 flex-grow">
-              <li class="flex items-start gap-3">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span><strong class="text-brand-slate">Chip +33 en Free Mobile:</strong> conseguilo el día 1. Es la forma más barata y sin sorpresas para tener número francés.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span><strong class="text-brand-slate">N26 o Nickel:</strong> cómo abrir un neobanco sin domicilio para tener tu RIB en 48 horas y desbloquear todo lo demás.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span><strong class="text-brand-slate">Ameli y CAF sin errores:</strong> alta en el sistema de salud y solicitud de ayuda al alquiler con los campos exactos a completar.</span>
-              </li>
-            </ul>
-          </article>
-
-          <!-- Módulo 3: Vida Diaria -->
-          <article class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 card-hover reveal flex flex-col">
-            <div class="w-14 h-14 bg-brand-navy rounded-2xl flex items-center justify-center mb-5 flex-shrink-0" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M12 8v4l3 3"/>
-              </svg>
-            </div>
-            <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4 self-start">Módulo 3</span>
-            <h3 class="text-xl font-bold text-brand-navy mb-5">Vida Diaria</h3>
-            <ul class="space-y-4 text-sm text-slate-600 flex-grow">
-              <li class="flex items-start gap-3">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span><strong class="text-brand-slate">La trampa de la Navigo:</strong> la foto correcta para la Navigo Découverte para evitar la multa de 50€ que se lleva a 1 de cada 3 recién llegados.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span><strong class="text-brand-slate">Mapa de supermercados:</strong> dónde está el Lidl, el Aldi y el mercado de barrio más cercano para que el presupuesto no se vaya en Monoprix.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span><strong class="text-brand-slate">Doctolib en español:</strong> cómo filtrar médicos hispanohablantes para los primeros turnos sin el estrés del idioma.</span>
-              </li>
-            </ul>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ================================================================
-         SECCIÓN 5 — TRANSPARENCIA / URGENCIA (Fase Beta)
-         ================================================================ -->
-    <section id="beta" class="py-20 sm:py-28 bg-brand-navy relative overflow-hidden">
-
-      <!-- Decoración de fondo -->
-      <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-orange/5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/4"></div>
-        <div class="absolute bottom-0 left-0 w-80 h-80 bg-brand-orange/5 rounded-full blur-3xl -translate-x-1/4 translate-y-1/4"></div>
-      </div>
-
-      <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
-        <!-- Ícono -->
-        <div class="w-16 h-16 bg-brand-orange/15 rounded-2xl flex items-center justify-center mx-auto mb-8" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        <!-- Pie del form -->
+        <p class="mt-4 text-center text-white/25 text-xs flex items-center justify-center gap-1.5">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
           </svg>
-        </div>
-
-        <p class="text-brand-orange font-semibold text-xs uppercase tracking-[0.2em] mb-4 reveal">Transparencia total</p>
-
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-6 reveal">
-          Por qué esto es<br />
-          <span class="hero-gradient-text">gratis hoy</span>
-        </h2>
-
-        <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-10 max-w-2xl mx-auto reveal">
-          Estoy validando mi sistema antes del lanzamiento oficial. Busco a
-          <strong class="text-white">5 argentinos decididos</strong>
-          que viajen pronto o acaben de llegar, que necesiten orden absoluto en su aterrizaje.
+          5 cupos · Fase Beta · Sin spam · Podés cancelar cuando quieras
         </p>
 
-        <!-- Caja del "pago" -->
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 mb-10 text-left max-w-md mx-auto reveal">
-          <p class="text-white font-semibold mb-5 text-center text-base">El único "pago" que te pido:</p>
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-11 h-11 bg-brand-orange/20 rounded-xl flex items-center justify-center" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-              </svg>
-            </div>
-            <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
-              2 minutos de tu opinión sincera al terminar. Un formulario cortito sobre qué funcionó y qué no. Eso me alcanza para ajustar el producto antes de cobrarlo.
-            </p>
-          </div>
-        </div>
-
-        <!-- Indicador de disponibilidad -->
-        <div class="flex items-center justify-center gap-3 mb-10 reveal" aria-label="2 de 5 cupos tomados">
-          <div class="flex gap-2" aria-hidden="true">
-            <span class="w-3.5 h-3.5 bg-brand-orange rounded-full"></span>
-            <span class="w-3.5 h-3.5 bg-brand-orange rounded-full"></span>
-            <span class="w-3.5 h-3.5 bg-white/20 rounded-full"></span>
-            <span class="w-3.5 h-3.5 bg-white/20 rounded-full"></span>
-            <span class="w-3.5 h-3.5 bg-white/20 rounded-full"></span>
-          </div>
-          <span class="text-slate-400 text-sm">2 de 5 cupos tomados</span>
-        </div>
-
-        <!-- CTA principal en beta -->
-        <div class="reveal">
-          <a
-            href="#"
-            <!-- REEMPLAZAR con tu link de Tally: https://tally.so/r/XXXXXX -->
-            class="inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orange-hot text-white font-bold text-base sm:text-lg px-10 py-4 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-0.5"
-          >
-            Postular Ahora — Es Gratis
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-
       </div>
-    </section>
+      <!-- /formulario -->
 
-  </main>
+    </div>
+  </div>
+</section>
 
 
-  <!-- ================================================================
-       FOOTER
-       ================================================================ -->
-  <footer class="bg-brand-navy border-t border-white/10 pt-12 pb-8">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- ============================================================
+     PROBLEMA — La realidad del migrante
+     ============================================================ -->
+<section class="bg-navy py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
 
-      <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-10">
+    <!-- Label -->
+    <p class="text-orange text-xs font-semibold uppercase tracking-[0.2em] mb-8">La realidad</p>
 
-        <!-- Logo + tagline -->
-        <div class="flex flex-col items-center md:items-start gap-3">
-          <img
-            src="assets/logo.png"
-            alt="BYEMEFUI"
-            class="h-10 w-auto object-contain brightness-0 invert"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-          />
-          <!-- Fallback tipográfico -->
-          <span class="hidden items-center text-2xl font-black text-white tracking-tight">
-            BYE<span class="text-brand-orange">ME</span>FUI
-          </span>
-          <p class="text-slate-500 text-sm text-center md:text-left leading-relaxed max-w-xs">
-            Mentoría estratégica 1 a 1 para argentinos<br class="hidden sm:block" /> que aterrizan en París.
-          </p>
-        </div>
+    <!-- Frase golpe -->
+    <div class="border-b border-white/10 pb-12 mb-12">
+      <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08] max-w-4xl">
+        "Sin casa no hay banco.<br />Sin banco, no hay casa."
+      </h2>
+      <p class="text-white/45 mt-5 text-base sm:text-lg max-w-2xl leading-relaxed">
+        El catch-22 que bloquea a la mayoría de los argentinos en sus primeras semanas en París. Y la burocracia francesa no te va a esperar.
+      </p>
+    </div>
 
-        <!-- Links y CTA final -->
-        <div class="flex flex-col items-center gap-5">
-          <a
-            href="#"
-            <!-- REEMPLAZAR con tu link de Tally: https://tally.so/r/XXXXXX -->
-            class="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-hot text-white font-semibold text-sm px-6 py-3 rounded-lg shadow-sm hover:shadow-md hover:-translate-y-px"
-          >
-            Reservar Sesión Gratis
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
+    <!-- 3 pain points -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-12">
 
-          <nav class="flex items-center gap-6" aria-label="Redes sociales">
-            <!-- Instagram -->
-            <a
-              href="https://instagram.com/byemefui"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center gap-2 text-slate-500 hover:text-white transition-colors text-sm group"
-              aria-label="BYEMEFUI en Instagram"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-brand-orange transition-colors" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-              </svg>
-              @byemefui
-            </a>
-          </nav>
-        </div>
-
+      <div class="space-y-3">
+        <p class="text-5xl sm:text-6xl font-black text-white/8 leading-none select-none" aria-hidden="true">01</p>
+        <h3 class="text-white font-bold text-lg -mt-2">El laberinto del RIB</h3>
+        <p class="text-white/45 text-sm leading-relaxed">
+          Para alquilar necesitás el RIB. Para el RIB necesitás domicilio. Para el domicilio necesitás el RIB. Este ciclo le cuesta semanas y cientos de euros en alojamiento de emergencia a casi todos.
+        </p>
       </div>
 
-      <!-- Copyright -->
-      <div class="mt-10 pt-6 border-t border-white/10 text-center">
-        <p class="text-slate-600 text-xs">
-          © 2025 BYEMEFUI. Todos los derechos reservados. Hecho con mate desde París.
+      <div class="space-y-3">
+        <p class="text-5xl sm:text-6xl font-black text-white/8 leading-none select-none" aria-hidden="true">02</p>
+        <h3 class="text-white font-bold text-lg -mt-2">El agujero negro de los foros</h3>
+        <p class="text-white/45 text-sm leading-relaxed">
+          50 respuestas contradictorias en un grupo de Facebook. 50 experiencias distintas, visas distintas, años distintos. La desinformación activa tiene costo: tiempo, plata y ansiedad.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <p class="text-5xl sm:text-6xl font-black text-white/8 leading-none select-none" aria-hidden="true">03</p>
+        <h3 class="text-white font-bold text-lg -mt-2">El sangrado diario de euros</h3>
+        <p class="text-white/45 text-sm leading-relaxed">
+          Un Airbnb en París: entre 80 y 150€ por noche. Cada día sin plan es plata que se evapora. Cada semana de improvisación puede costar más que un mes de alquiler real.
         </p>
       </div>
 
     </div>
-  </footer>
+
+  </div>
+</section>
 
 
-  <!-- ================================================================
-       JAVASCRIPT: Reveal on scroll (Intersection Observer, sin librerías)
-       ================================================================ -->
-  <script>
-    (function () {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-      );
+<!-- ============================================================
+     MÉTODO — Lo que te llevás
+     ============================================================ -->
+<section class="py-20 sm:py-28 bg-cream">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
 
-      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-    })();
-  </script>
+    <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-20 items-start">
+
+      <!-- Sticky label izquierda -->
+      <div class="lg:sticky lg:top-24">
+        <p class="text-orange text-xs font-semibold uppercase tracking-[0.2em] mb-4">El método</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-navy leading-tight">
+          Lo que te llevás<br />de la sesión.
+        </h2>
+        <p class="text-navy/55 mt-3 text-sm leading-relaxed">
+          En 30 minutos resolvemos lo que no encontraste en 50 foros.
+        </p>
+      </div>
+
+      <!-- Pasos -->
+      <div class="divide-y divide-navy/8">
+
+        <div class="py-8 flex gap-5 items-start">
+          <span class="text-3xl font-black text-orange/30 flex-shrink-0 w-9 leading-none" aria-hidden="true">1.</span>
+          <div>
+            <h3 class="font-black text-navy text-lg mb-1.5">El filtro de situación</h3>
+            <p class="text-navy/60 text-sm leading-relaxed">
+              Antes de la sesión llenás un formulario corto: tu tipo de visa, tu fecha de llegada y tu presupuesto estimado. Eso permite que los 30 minutos sean 100% útiles desde el arranque, sin perder tiempo en lo que ya sabés.
+            </p>
+          </div>
+        </div>
+
+        <div class="py-8 flex gap-5 items-start">
+          <span class="text-3xl font-black text-orange/30 flex-shrink-0 w-9 leading-none" aria-hidden="true">2.</span>
+          <div>
+            <h3 class="font-black text-navy text-lg mb-1.5">La sesión estratégica <span class="text-orange">(30 min por Meet)</span></h3>
+            <p class="text-navy/60 text-sm leading-relaxed">
+              Atacamos juntos tus 3 dudas más urgentes. Ordenamos las prioridades. Tiramos abajo los mitos. Sin vueltas, sin teoría de embajada. Pura acción concreta para tu situación específica.
+            </p>
+          </div>
+        </div>
+
+        <div class="py-8 flex gap-5 items-start">
+          <span class="text-3xl font-black text-orange/30 flex-shrink-0 w-9 leading-none" aria-hidden="true">3.</span>
+          <div>
+            <h3 class="font-black text-navy text-lg mb-1.5">Tu receta de aterrizaje en PDF</h3>
+            <p class="text-navy/60 text-sm leading-relaxed">
+              Un documento personalizado con los pasos exactos para tu situación. Links oficiales verificados, hacks de la calle que no encontrás en ningún blog, y la secuencia correcta de trámites para tus primeras 48 horas en suelo francés.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- CTA intermedio -->
+    <div class="mt-12 pt-10 border-t border-navy/8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <a href="#formulario"
+        class="inline-flex items-center gap-2.5 bg-orange hover:bg-orange-d text-white font-bold text-sm px-6 py-3.5 rounded-xl hover:-translate-y-px hover:shadow-md hover:shadow-orange/25">
+        Quiero mi hoja de ruta
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p class="text-navy/40 text-sm">Cupos disponibles ahora mismo. Después tiene precio.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     MÓDULOS — El Starter Kit
+     ============================================================ -->
+<section class="py-20 sm:py-28 bg-navy/3 border-y border-navy/8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <!-- Header -->
+    <div class="mb-12">
+      <p class="text-orange text-xs font-semibold uppercase tracking-[0.2em] mb-4">El starter kit</p>
+      <h2 class="text-3xl sm:text-5xl font-black text-navy leading-tight max-w-2xl">
+        Data de calle.<br />No teoría de embajada.
+      </h2>
+    </div>
+
+    <!-- Foto fullwidth opcional
+         Reemplazá el div por:
+         <figure class="mb-10 rounded-2xl overflow-hidden aspect-[21/7]">
+           <img src="assets/foto-modulos.jpg" alt="París vida real" class="w-full h-full object-cover" />
+         </figure>
+    -->
+    <div class="mb-10 rounded-2xl aspect-[21/7] photo-placeholder" aria-hidden="true">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span>FOTO PANORÁMICA · reemplazá assets/foto-modulos.jpg</span>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+      <!-- Módulo 1: Vivienda -->
+      <article class="bg-white rounded-2xl overflow-hidden border border-navy/8 hover:border-orange/40 hover:shadow-xl hover:shadow-navy/5 hover:-translate-y-1 transition-all duration-300">
+        <div class="bg-navy px-6 py-5">
+          <p class="text-orange/50 font-bold text-[10px] uppercase tracking-widest">Módulo 01</p>
+          <h3 class="text-white font-black text-2xl mt-1">Vivienda</h3>
+        </div>
+        <div class="p-6 space-y-5">
+          <div class="flex gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-orange mt-1.5 flex-shrink-0"></span>
+            <div>
+              <p class="font-bold text-navy text-sm">Garantía VISALE</p>
+              <p class="text-navy/50 text-xs mt-0.5 leading-relaxed">Activala antes de llegar. Es el aval del Estado francés para que los propietarios te tomen en serio sin fianza extra.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-orange mt-1.5 flex-shrink-0"></span>
+            <div>
+              <p class="font-bold text-navy text-sm">DossierFacile</p>
+              <p class="text-navy/50 text-xs mt-0.5 leading-relaxed">El expediente digital del gobierno para presentarte como candidato sólido, sin agencia inmobiliaria.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-orange mt-1.5 flex-shrink-0"></span>
+            <div>
+              <p class="font-bold text-navy text-sm">Alertas en Jinka</p>
+              <p class="text-navy/50 text-xs mt-0.5 leading-relaxed">El truco para ser el primero en ver los pisos nuevos y detectar estafas antes de mover un euro.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Módulo 2: Administración -->
+      <article class="bg-white rounded-2xl overflow-hidden border border-navy/8 hover:border-orange/40 hover:shadow-xl hover:shadow-navy/5 hover:-translate-y-1 transition-all duration-300">
+        <div class="bg-orange px-6 py-5">
+          <p class="text-white/50 font-bold text-[10px] uppercase tracking-widest">Módulo 02</p>
+          <h3 class="text-white font-black text-2xl mt-1">Administración Express</h3>
+        </div>
+        <div class="p-6 space-y-5">
+          <div class="flex gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-orange mt-1.5 flex-shrink-0"></span>
+            <div>
+              <p class="font-bold text-navy text-sm">Chip +33 · Free Mobile</p>
+              <p class="text-navy/50 text-xs mt-0.5 leading-relaxed">Conseguilo el día 1. El más barato, sin sorpresas, y es el primer paso que desbloquea todo lo que sigue.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-orange mt-1.5 flex-shrink-0"></span>
+            <div>
+              <p class="font-bold text-navy text-sm">N26 o Nickel</p>
+              <p class="text-navy/50 text-xs mt-0.5 leading-relaxed">Cómo abrir un neobanco sin domicilio para tener tu RIB en 48 horas y romper el círculo vicioso.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-orange mt-1.5 flex-shrink-0"></span>
+            <div>
+              <p class="font-bold text-navy text-sm">Ameli & CAF sin errores</p>
+              <p class="text-navy/50 text-xs mt-0.5 leading-relaxed">Alta en salud y solicitud de ayuda al alquiler con los campos exactos que hay que completar para que no te rechacen.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Módulo 3: Vida Diaria -->
+      <article class="bg-white rounded-2xl overflow-hidden border border-navy/8 hover:border-orange/40 hover:shadow-xl hover:shadow-navy/5 hover:-translate-y-1 transition-all duration-300">
+        <div class="bg-navy-mid px-6 py-5">
+          <p class="text-orange/50 font-bold text-[10px] uppercase tracking-widest">Módulo 03</p>
+          <h3 class="text-white font-black text-2xl mt-1">Vida Diaria</h3>
+        </div>
+        <div class="p-6 space-y-5">
+          <div class="flex gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-orange mt-1.5 flex-shrink-0"></span>
+            <div>
+              <p class="font-bold text-navy text-sm">La trampa de la Navigo</p>
+              <p class="text-navy/50 text-xs mt-0.5 leading-relaxed">La foto correcta para la Navigo Découverte. La multa de 50€ que se lleva a 1 de cada 3 recién llegados.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-orange mt-1.5 flex-shrink-0"></span>
+            <div>
+              <p class="font-bold text-navy text-sm">Mapa de supermercados</p>
+              <p class="text-navy/50 text-xs mt-0.5 leading-relaxed">Lidl, Aldi y el mercado de barrio más cercano. Para que el presupuesto no se vaya todo en Monoprix.</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-orange mt-1.5 flex-shrink-0"></span>
+            <div>
+              <p class="font-bold text-navy text-sm">Doctolib en español</p>
+              <p class="text-navy/50 text-xs mt-0.5 leading-relaxed">Cómo filtrar médicos hispanohablantes para los primeros turnos sin el estrés del idioma.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     QUIÉN SOY + POR QUÉ ES GRATIS
+     ============================================================ -->
+<section class="py-20 sm:py-28 bg-cream">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-12 lg:gap-16 items-start">
+
+      <!-- Foto de perfil
+           Reemplazá el div por:
+           <figure class="rounded-2xl overflow-hidden aspect-square lg:aspect-[4/5]">
+             <img src="assets/foto-perfil.jpg" alt="[Tu nombre]" class="w-full h-full object-cover" />
+           </figure>
+      -->
+      <div>
+        <div class="rounded-2xl aspect-[4/5] photo-placeholder" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>TU FOTO · reemplazá assets/foto-perfil.jpg</span>
+        </div>
+        <!-- Redes bajo la foto -->
+        <a href="https://instagram.com/byemefui" target="_blank" rel="noopener noreferrer"
+          class="mt-4 flex items-center gap-2 text-navy/45 hover:text-orange text-sm font-medium">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+          @byemefui
+        </a>
+      </div>
+
+      <!-- Texto -->
+      <div class="space-y-6">
+        <div>
+          <p class="text-orange text-xs font-semibold uppercase tracking-[0.2em] mb-4">¿Quién es BYEMEFUI?</p>
+          <h2 class="text-3xl sm:text-5xl font-black text-navy leading-tight">
+            Pasé por el barro.<br />Ahora te doy el mapa.
+          </h2>
+        </div>
+
+        <p class="text-navy/65 text-base sm:text-lg leading-relaxed">
+          Soy argentino. Llegué a París sin saber francés y con una hoja de Excel que se desactualizaba a cada hora. Cometí todos los errores que podía cometer. Perdí plata. Perdí tiempo. Perdí el sueño.
+        </p>
+        <p class="text-navy/65 text-base sm:text-lg leading-relaxed">
+          Hoy <strong class="text-navy">BYEMEFUI</strong> es lo que me hubiera gustado tener: una persona real que ya pasó por lo mismo, que te diga exactamente qué hacer y en qué orden, sin venderte aire caliente.
+        </p>
+
+        <!-- Beta card -->
+        <div class="bg-navy rounded-2xl p-6 sm:p-8 mt-2">
+          <div class="flex flex-col sm:flex-row items-start gap-5">
+            <div class="flex-shrink-0 w-11 h-11 bg-orange rounded-xl flex items-center justify-center" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-base mb-2">Por qué es gratis hoy</h3>
+              <p class="text-white/50 text-sm leading-relaxed">
+                Estoy validando el sistema antes del lanzamiento oficial. El único "pago" que pido son <strong class="text-white">2 minutos de tu opinión sincera</strong> al terminar. Busco 5 argentinos decididos que viajen pronto o recién lleguen. Después esto tiene precio.
+              </p>
+              <div class="flex items-center gap-2.5 mt-4" aria-label="3 cupos disponibles de 5">
+                <div class="flex gap-1.5" aria-hidden="true">
+                  <span class="w-2.5 h-2.5 bg-orange rounded-full"></span>
+                  <span class="w-2.5 h-2.5 bg-orange rounded-full"></span>
+                  <span class="w-2.5 h-2.5 bg-white/15 rounded-full"></span>
+                  <span class="w-2.5 h-2.5 bg-white/15 rounded-full"></span>
+                  <span class="w-2.5 h-2.5 bg-white/15 rounded-full"></span>
+                </div>
+                <span class="text-white/35 text-xs">3 cupos disponibles de 5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CTA FINAL — Sección naranja
+     ============================================================ -->
+<section class="py-20 sm:py-28 bg-orange">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+
+    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.06] mb-5">
+      ¿Vas a París pronto?<br />No improvisar.
+    </h2>
+    <p class="text-white/75 text-lg mb-10 leading-relaxed">
+      Reservá tu sesión gratuita ahora. Tardás menos de 1 minuto.
+    </p>
+    <a
+      href="#formulario"
+      class="inline-flex items-center gap-3 bg-navy hover:bg-navy-mid text-white font-black text-lg px-10 py-4 rounded-xl hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-navy/40"
+    >
+      Postular a la Fase Beta — Es Gratis
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+    <p class="mt-5 text-white/50 text-sm">5 cupos · Fase Beta · Después tiene precio</p>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="bg-navy py-10">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-5">
+
+      <div class="flex items-center gap-3 flex-wrap justify-center sm:justify-start">
+        <img src="assets/logo.png" alt="BYEMEFUI" class="h-8 w-auto object-contain brightness-0 invert"
+          onerror="this.outerHTML='<span class=\'font-black text-lg text-white\'>BYE<span class=\'text-orange\'>ME</span>FUI</span>'" />
+        <span class="text-white/20 hidden sm:inline">·</span>
+        <span class="text-white/35 text-sm">Mentoría para argentinos en París</span>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="https://instagram.com/byemefui" target="_blank" rel="noopener noreferrer"
+          class="flex items-center gap-1.5 text-white/35 hover:text-orange text-sm transition-colors">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+          @byemefui
+        </a>
+        <a href="#formulario" class="text-white/35 hover:text-orange text-sm transition-colors">
+          Postular
+        </a>
+      </div>
+
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-white/8 text-center">
+      <p class="text-white/20 text-xs">© 2025 BYEMEFUI. Hecho con mate desde París.</p>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JS: Radio buttons — activar clase "checked" para estilos CSS
+     ============================================================ -->
+<script>
+  document.querySelectorAll('.radio-option input[type="radio"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      document.querySelectorAll('input[name="' + this.name + '"]').forEach(function(r) {
+        var label = r.closest('.radio-option');
+        if (label) label.dataset.checked = r.checked ? 'true' : 'false';
+      });
+    });
+  });
+</script>
 
 </body>
 </html>

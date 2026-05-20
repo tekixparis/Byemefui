@@ -1,99 +1,115 @@
 /* =============================================
-   BYEMEFUI — Custom Styles
-   Complementa Tailwind CSS con estilos base
-   y pulidos de experiencia premium.
+   BYEMEFUI — Custom Styles v2
    ============================================= */
 
-/* --- Reset suave --- */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
 }
 
-/* --- Scrollbar personalizado --- */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #fdfbf7; }
-::-webkit-scrollbar-thumb { background: #d97706; border-radius: 3px; }
+::selection { background: #F5820D; color: #fff; }
 
-/* --- Selección de texto --- */
-::selection { background: #d97706; color: #ffffff; }
-::-moz-selection { background: #d97706; color: #ffffff; }
-
-/* --- Focus ring accesible --- */
+/* ---- Focus ring ---- */
 a:focus-visible,
-button:focus-visible {
-  outline: 2px solid #d97706;
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #F5820D;
   outline-offset: 3px;
   border-radius: 6px;
 }
 
-/* --- Transiciones globales para interactivos --- */
-a, button {
-  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
+/* ---- Radio buttons personalizados ---- */
+.radio-option input[type="radio"] { display: none; }
+.radio-option .dot {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.25);
+  flex-shrink: 0;
+  transition: border-color 0.15s, background 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.radio-option input[type="radio"]:checked + label .dot,
+.radio-option input[type="radio"]:checked ~ .dot {
+  border-color: #F5820D;
+  background: #F5820D;
+}
+.radio-option input[type="radio"]:checked ~ .dot::after {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #fff;
+}
+.radio-option label { cursor: pointer; }
+.radio-option input[type="radio"]:checked ~ span,
+.radio-option input[type="radio"]:checked + label span {
+  color: #fff;
 }
 
-/* --- Hero: gradiente de texto para el H1 --- */
-.hero-gradient-text {
-  background: linear-gradient(135deg, #d97706 0%, #ea580c 100%);
+/* ---- Select flecha custom ---- */
+.select-custom {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 7L11 1' stroke='rgba(255,255,255,0.4)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.select-custom option { color: #0C1527; background: #fff; }
+
+/* ---- Gradiente de texto naranja ---- */
+.text-gradient {
+  background: linear-gradient(135deg, #F5820D 0%, #ea580c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* --- Pulso sutil del badge de disponibilidad --- */
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.5; transform: scale(0.85); }
+/* ---- Pulse badge ---- */
+@keyframes pulse-ring {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.4); opacity: 0; }
 }
-.badge-pulse { animation: pulse-dot 2s ease-in-out infinite; }
-
-/* --- Fade-in de secciones al hacer scroll (se activa con JS) --- */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* --- Step connector decorativo (desktop) --- */
-.step-connector {
+.pulse-ring::before {
+  content: "";
   position: absolute;
-  top: 52px;
-  left: calc(33.33% + 28px);
-  right: calc(33.33% + 28px);
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #fcd34d, transparent);
+  inset: -3px;
+  border-radius: 50%;
+  background: #F5820D;
+  animation: pulse-ring 2s ease-in-out infinite;
 }
 
-/* --- Cards hover con elevación sutil --- */
-.card-hover {
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-.card-hover:hover {
-  box-shadow: 0 8px 32px -4px rgba(15, 23, 42, 0.12);
-  transform: translateY(-3px);
+/* ---- Placeholder fotos ---- */
+.photo-placeholder {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(12,21,39,0.04),
+    rgba(12,21,39,0.04) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  border: 2px dashed rgba(12,21,39,0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(12,21,39,0.35);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
 }
 
-/* --- Utility: texto con equilibrio óptico en títulos --- */
-h1, h2, h3 {
-  text-wrap: balance;
-}
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #FDFAF5; }
+::-webkit-scrollbar-thumb { background: #F5820D; border-radius: 3px; }
 
-/* --- Navbar backdrop blur fix para Safari --- */
-@supports not (backdrop-filter: blur(8px)) {
-  .navbar-bg { background-color: #fdfbf7; }
-}
+/* ---- Transiciones globales ---- */
+a, button { transition-property: color, background-color, border-color, box-shadow, transform, opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 200ms; }
+
+/* ---- Equilibrio tipográfico ---- */
+h1, h2, h3 { text-wrap: balance; }
