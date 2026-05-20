@@ -1,0 +1,7 @@
+REEMPLAZAR ESTE ARCHIVO con el logo real (logo.png o logo.jpg).
+
+El archivo de imagen debe llamarse exactamente: logo.png
+y colocarse en esta carpeta: /assets/
+
+La etiqueta <img> en index.html ya apunta a assets/logo.png.
+Si el archivo no existe, el HTML hace fallback al nombre tipográfico "BYEMEFUI".
